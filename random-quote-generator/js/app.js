@@ -86,11 +86,12 @@ var model = {
 
 var quoteController = {
   init: function() {
-    //Go to the model and get the first quote in the array
+   //Go to the model and get the first quote in the array
     model.currentQuote = model.quotes[0];
     
     //Initialize views
     quoteView.init();
+    newQuoteButton.init();
   },
   
   getQuotes: function() {
@@ -102,10 +103,10 @@ var quoteController = {
   },
   
   //Use the object that's passed in to show new quote when button is clicked
-  setCurrentQuote: function(book) {
-    model.currentQuote = book;
+  getRandomQuote: function(quote) {
+    var randomQuote = model.quotes[Math.floor(Math.random() * model.quotes.length)];
+    model.currentQuote = randomQuote;
   }
-  
 };
 
 var quoteView = {
@@ -128,7 +129,22 @@ var quoteView = {
   
 };
 
-
+var newQuoteButton = {
+  init: function() {
+    var newQuote = document.getElementById("newQuote");
+  
+    this.render();
+  },
+  
+  render: function() {
+    newQuote.addEventListener('click', (function(quoteCopy) {
+      return function() {
+        quoteController.getRandomQuote(quoteCopy);
+        quoteView.render();
+      }
+    })());
+  }  
+};
 
 quoteController.init();
 
