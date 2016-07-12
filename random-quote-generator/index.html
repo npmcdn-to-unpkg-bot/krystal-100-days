@@ -16,10 +16,33 @@
     
     <section id="buttons">
       <button id="newQuote">New Quote</button>
-      <button id="tweet">Tweet</button>
+<!--      <a href="" id="newQuote">New Quote</a>-->
+      <a href="" id="tweet" target="_blank" title="Tweet this quote">Tweet</a>
     </section>
   </main>
   <script src="js/app.js"></script>  
 </body>
 
 </html>
+
+
+
+
+
+
+
+
+<!--
+ 
+ $('#tweet-quote').on('click', function() {
+    if(!inIframe()) {
+      openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+    }
+  });-->
+
+<!--
+
+  tweet.addEventListener("click", function(){
+    console.log(tweetContent);
+    quoteController.openURL('https://twitter.com/intent/tweet?hashtags=quotes&related=freecodecamp&text=' + encodeURIComponent('"' + currentQuote + '" ' + currentAuthor));
+  });   -->
