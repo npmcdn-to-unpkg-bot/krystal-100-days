@@ -85,99 +85,97 @@ var model = {
 };
 
 var quoteController = {
-  init: function() {
-   //Go to the model and get the first quote in the array
+  init: function () {
+    //Go to the model and get the first quote in the array
     model.currentQuote = model.quotes[0];
-    
+
     //Initialize views
     quoteView.init();
     newQuoteButton.init();
     tweetButton.init();
   },
-  
-  getQuotes: function() {
+
+  getQuotes: function () {
     return model.quotes;
   },
-  
-  getCurrentQuote: function() {
+
+  getCurrentQuote: function () {
     return model.currentQuote;
   },
-  
+
   //Use the object that's passed in to show new quote when button is clicked
-  getRandomQuote: function(quote) {
+  getRandomQuote: function (quote) {
     var randomQuote = model.quotes[Math.floor(Math.random() * model.quotes.length)];
     model.currentQuote = randomQuote;
-  }, 
+  },
   
-  openURL: function(url) {
-    window.open(url, 'Share', 'width=550, height=300, toolbar=0, scrollbars=1 ,location=0 ,statusbar=0,menubar=0, resizable=0');
+  getTweet: function(quote) {
+    var tweetText = this.getCurrentQuote();
+    return tweetText;
+  },
+
+  openURL: function (url) {
+    window.open(url);
   }
+
 };
 
 var quoteView = {
-  init: function() {
+  init: function () {
     //Create pointers
     this.quoteText = document.getElementById("quoteText");
     this.quoteSource = document.getElementById("quoteSource");
-    
+
     //Update DOM
     this.render();
   },
-  
-  render: function() {
+
+  render: function () {
     var currentQuote = quoteController.getCurrentQuote();
-    
+
     this.quoteText.textContent = currentQuote.quote;
     this.quoteSource.textContent = currentQuote.source;
-    
   }
-  
+
 };
 
 var newQuoteButton = {
-  init: function() {
+  init: function () {
     var newQuote = document.getElementById("newQuote");
-  
+
     this.render();
   },
-  
-  render: function() {
-    newQuote.addEventListener('click', (function(quoteCopy) {
-      return function() {
+
+  render: function () {
+    newQuote.addEventListener('click', (function (quoteCopy) {
+      return function () {
         quoteController.getRandomQuote(quoteCopy);
         quoteView.render();
       }
     })());
-  }  
+  }
 };
 
 var tweetButton = {
-  init: function() {
-    var tweet = document.getElementById("tweet");
-    
+  init: function () {
+    var tweet = document.getElementById("tweet");    
     
     this.render();
   },
-  
-  render: function() {
-  var tweetContent = document.getElementById("quoteText").innerHTML;
-  var tweetSource = document.getElementById("quoteSource").innerHTML;
-    
-  tweet.setAttribute('href', 'https://twitter.com/intent/tweet?hashtags=murakami&related=freecodecamp&text=' + encodeURIComponent('"' + tweetContent + '" ' + tweetSource));
-   
-  tweet.addEventListener("click", function(){
-    console.log(tweetContent);
-    quoteController.openURL('https://twitter.com/intent/tweet?hashtags=murakami&related=freecodecamp&via=codeseeders&text=' + encodeURIComponent('"' + tweetContent + '" ' + tweetSource ));
-  });   
 
+  render: function () {
+
+    tweet.addEventListener("click", function () {
+      
+        var currentQuote = quoteController.getTweet(),
+            tweetContent = currentQuote.quote,
+            tweetSource = currentQuote.source;
+
+        tweet.setAttribute('href', 'https://twitter.com/share?hashtags=murakami&via=codeseeder&text=' + encodeURIComponent('"' + tweetContent + '" ' + tweetSource));
+
+        quoteController.openURL('https://twitter.com/share?hashtags=murakami&via=codeseeders&text=' + encodeURIComponent('"' + tweetContent + '" ' + tweetSource));
+    });
   }
-  
-
 };
 
 quoteController.init();
-
-
-
-
-
