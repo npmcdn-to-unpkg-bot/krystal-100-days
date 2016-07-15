@@ -148,6 +148,7 @@ var newQuoteButton = {
 
   render: function () {
     newQuote.addEventListener('click', (function (quoteCopy) {
+
       return function () {
         quoteController.getRandomQuote(quoteCopy);
         quoteView.render();
