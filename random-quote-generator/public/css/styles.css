@@ -1,3 +1,5 @@
 body {
-  background: #ccc;
+  background: pink;
+  color: white;
+  display: flex;
 }

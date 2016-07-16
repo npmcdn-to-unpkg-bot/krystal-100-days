@@ -2,6 +2,8 @@ var gulp = require('gulp');
 var uglify = require('gulp-uglify');
 var livereload = require('gulp-livereload');
 var concat = require('gulp-concat');
+var minifyCss = require('gulp-minify-css');
+var autoprefixer = require('gulp-autoprefixer');
 
 // File paths
 var DIST_PATH = 'public/dist';
@@ -12,7 +14,9 @@ var CSS_PATH = 'public/css/**/*.css';
 gulp.task('styles', function() {
   console.log('starting styles task');
   return gulp.src(['public/css/reset.css', CSS_PATH])
+    .pipe(autoprefixer())
     .pipe(concat('styles.css'))
+    .pipe(minifyCss())
     .pipe(gulp.dest(DIST_PATH))
     .pipe(livereload());
 });
@@ -42,5 +46,6 @@ gulp.task('watch', function() {
   require('./server.js');
   livereload.listen();
   gulp.watch(SCRIPTS_PATH, ['scripts']);
+  gulp.watch(CSS_PATH, ['styles']);
 });
 
