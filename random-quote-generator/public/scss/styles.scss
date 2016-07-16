@@ -1,0 +1,8 @@
+@import "./reset/normalize";  
+$black: pink;
+
+body {
+  background: $black;
+  color: white;
+  display: flex;
+}
