@@ -1,5 +1,7 @@
 var model = {
   currentQuote: null,
+  currentColor: null,
+  colors: ['#423E37 ', '#E3B23C', '#A39594 ', '#6E675F', '#8693AB', '#5B9279', '#8E5572'],
   quotes: [
     {
       quote: "If you only read the books that everyone else is reading, you can only think what everyone else is thinking.",
@@ -109,6 +111,11 @@ var quoteController = {
     model.currentQuote = randomQuote;
   },
   
+  getRandomColor: function (color) {
+    var randomColor = model.colors[Math.floor(Math.random() * model.colors.length)];
+    return model.currentColor = randomColor;
+  },
+  
   getTweet: function(quote) {
     var tweetText = this.getCurrentQuote();
     return tweetText;
@@ -147,10 +154,12 @@ var newQuoteButton = {
   },
 
   render: function () {
-    newQuote.addEventListener('click', (function (quoteCopy) {
-
+    newQuote.addEventListener('click', (function (quoteCopy, color) {
+      var newBackground = document.querySelector("main");
+      
       return function () {
         quoteController.getRandomQuote(quoteCopy);
+        newBackground.style.background = quoteController.getRandomColor(color);
         quoteView.render();
       }
     })());
