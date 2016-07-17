@@ -1,8 +1,84 @@
 @import "./reset/normalize";  
-$black: pink;
+$firstBackground: #81968F;
+$white: #E6EBEO;
 
 body {
-  background: $black;
-  color: white;
-  display: flex;
+  font-size: 16px;
 }
+
+main {
+  background: $firstBackground;
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  font-family: 'Raleway', sans-serif;
+  h1 {
+    font-family: 'Bitter', serif;
+    color: $white;
+    margin-bottom: 3rem;
+  }
+}
+
+/* Quote Container */
+
+[id=quoteContainer] {
+  background: #fff;
+  height: 25vh;
+  width: 50vw;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  [id=catPic] {
+    flex-grow: 1;
+    height: 100%;
+    max-height: 100px;
+    max-width:100px;
+    margin-right: 2rem;
+  }
+  #quoteBlock {
+    max-width: 65%;
+    flex-grow: 3;
+    padding-left: 1rem;
+    [id=quoteText] {
+      font-size: 1.3rem;
+      [id=quoteText]:before {
+        content: "\201C"
+      }
+      [id=quoteText]:after {
+        content: "\201D"
+      }
+    } 
+    [id=quoteSource] {
+      font-style: italic;
+    }
+  }
+}
+
+
+/* Buttons */
+
+[id=buttons] {
+  margin-top: 2rem;
+  .btn {
+    padding: 15px 10px;
+    border: 1px solid #000;
+    display: inline-block;
+    text-decoration: none;
+    min-width: 125px;
+    text-align: center;
+    background: #fff;
+    color: #000;
+    font-size: 1.2rem;
+  }
+}
+
+
+
+
+
+
+
+
+
