@@ -1,11 +1,23 @@
 var model = {
   currentQuote: null,
   currentColor: null,
-  colors: ['#423E37 ', '#E3B23C', '#A39594 ', '#6E675F', '#8693AB', '#5B9279', '#8E5572'],
+  colors: ['#423E37 ', '#A39594 ', '#6E675F', '#8693AB', '#5B9279', '#8E5572'],
   quotes: [
+    {
+      quote: "If you really want to know something, you have to be willing to pay the price.",
+      source: "After Dark"
+    },
+    {
+      quote: "Life is so uncertain: you never know what could happen. One way to deal with that is to keep your pajamas washed.",
+      source: "1Q84"
+    },
     {
       quote: "If you only read the books that everyone else is reading, you can only think what everyone else is thinking.",
       source: "Norwegian Wood"
+    },
+    {
+      quote: "Unclose your mind. You are not a prisoner. You are a bird in fight, searching the skies for dreams.",
+      source: "Hard-Boiled Wonderland and the End of the World"
     },
     {
       quote: "Sometimes I get real lonely sleeping with you.",
@@ -82,7 +94,24 @@ var model = {
     {
       quote: "A certain type of perfection can only be realized through a limitless accumulation of the imperfect.",
       source: "Kafka on the Shore"
+    },
+        {
+      quote: "Whiskey, like a beautiful woman, demands appreciation. You gaze first, then it's time to drink.",
+      source: "Hard-Boiled Wonderland and the End of the World"
+    },
+            {
+      quote: "There are ways of dying that don't end in funerals. Types of death you can't smell.",
+      source: "Blind Willow, Sleeping Woman"
+    },
+            {
+      quote: "I’m the kind of person who likes to be by himself. To put a finer point on it, I’m the type of person who doesn’t find it painful to be alone.",
+      source: "What I Talk About When I Talk About Running"
+    },
+                {
+      quote: "Things outside you are projections of what's inside you, and what's inside you is a projection of what's outside. So when you step into the labyrinth outside you, at the same time you're stepping into the labyrinth inside.",
+      source: "Kafka on the Shore"
     }
+    
   ]
 };
 
@@ -155,7 +184,7 @@ var newQuoteButton = {
 
   render: function () {
     newQuote.addEventListener('click', (function (quoteCopy, color) {
-      var newBackground = document.querySelector("main");
+      var newBackground = document.querySelector("body");
       
       return function () {
         quoteController.getRandomQuote(quoteCopy);

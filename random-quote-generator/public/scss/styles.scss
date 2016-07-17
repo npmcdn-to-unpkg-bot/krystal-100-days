@@ -1,14 +1,15 @@
 @import "./reset/normalize";  
 $firstBackground: #93A8AC;
+$h1: #fff;
 $white: #E6EBEO;
 
 body {
   font-size: 16px;
+  background: $firstBackground;
 }
 
 main {
-  background: $firstBackground;
-  height: 100vh;
+  height: 97vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -16,7 +17,7 @@ main {
   font-family: 'Raleway', sans-serif;
   h1 {
     font-family: 'Bitter', serif;
-    color: $white;
+    color: $h1;
     margin-bottom: 3rem;
   }
 }
@@ -37,7 +38,7 @@ main {
     max-width:100px;
     margin-right: 2rem;
   }
-  #quoteBlock {
+  [id=quoteBlock] {
     max-width: 65%;
     flex-grow: 3;
     padding-left: 1rem;
@@ -71,6 +72,18 @@ main {
     background: #fff;
     color: #000;
     font-size: 1.2rem;
+  }
+}
+
+footer {
+  height: 3vh;
+  text-align: right;
+  color: $h1;
+  a {
+    text-decoration: none;
+    color: $h1;
+    display: inline-block;
+    padding-right: 1rem;
   }
 }
 
