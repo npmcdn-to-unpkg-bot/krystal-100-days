@@ -6,6 +6,7 @@ $white: #E6EBEO;
 body {
   font-size: 16px;
   background: $firstBackground;
+  box-sizing: border-box;
 }
 
 main {
@@ -86,6 +87,9 @@ footer {
     padding-right: 1rem;
   }
 }
+
+
+
 
 
 
