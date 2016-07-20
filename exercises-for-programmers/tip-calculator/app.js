@@ -10,27 +10,22 @@ function tipCalculator() {
 }
 
 function getBillAmount() {
-  billAmount = (prompt("What is the bill amount?")) * 100;
-  console.log(billAmount);
-  console.log(typeof billAmount);
+  billAmount = prompt("What is the bill amount?") * 100;
   return billAmount;
 }
 
 function getTipAmount() {
-  tipRate = Number(prompt("What is the tip rate?"));
-  console.log(tipRate);
-  console.log(typeof tipRate);
+  tipRate = prompt("What is the tip rate?") / 100;
   return tipRate;
 }
 
 function calculateTip() {
-  tip = Math.round(billAmount * (tipRate / 100))
-  console.log(tip);
+  tip = billAmount * tipRate;
+  tipDollars = (tip/100).toFixed(2);
   
-  total = Math.round(billAmount + tip) / 100;
+  total = ((billAmount + tip) / 100).toFixed(2);
 
-//  var total = Math.round(total/100) / 100;
-  console.log("Tip: $" + tip);
+  console.log("Tip: $" + tipDollars);
   console.log("Total: $" + total);
 }
 
