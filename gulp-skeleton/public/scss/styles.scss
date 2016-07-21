@@ -1,0 +1,8 @@
+@import "./normalize.scss";
+  
+$grey: #f7f7f7;  
+
+body {
+  background: $grey;
+  display: flex;
+}
