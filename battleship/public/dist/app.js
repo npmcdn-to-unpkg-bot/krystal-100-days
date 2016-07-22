@@ -1,1 +1,1 @@
-var name="Skeleton";document.write("Hello, this is the Gulp"+name+"!");
+var view={displayMessage:function(e){var i=document.getElementById("messageArea");i.innerHTML=e},displayHit:function(e){var i=document.getElementById(e);i.setAttribute("class","hit")},displayMiss:function(e){var i=document.getElementById(e);i.setAttribute("class","miss")}};view.displayMiss("00"),view.displayHit("34"),view.displayMiss("55"),view.displayHit("26"),view.displayMessage("Is this working?");
