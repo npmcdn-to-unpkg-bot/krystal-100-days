@@ -17,7 +17,7 @@ var model = {
       hits: ["", "", ""]
     }
   ],
-  fire: function(guess) {
+  fire: function (guess) {
     for (var i = 0; i < this.numShips; i++) {
       var ship = this.ships[i];
       var index = ship.locations.indexOf(guess);
@@ -37,36 +37,52 @@ var model = {
     //Indicate a miss
     return false;
   },
-  isSunk: function(ship) {
-    for(var i = 0; i < this.shipLength; i++) {
-      if(ship.hits[i] !== "hit") {
+  isSunk: function (ship) {
+    for (var i = 0; i < this.shipLength; i++) {
+      if (ship.hits[i] !== "hit") {
         //ship is still floating
         return false;
       }
     }
-//    return true;
-  }  
-  
+    return true;
+  }
+
+};
+
+var controller = {
+  guesses: 0,
+  processGuess: function (guess) {
+    var location = parseGuess(guess);
+    if (location) {
+      this.guesses++;
+      var hit = model.fire(location);
+      if (hit && model.shipsSunk === model.numShips) {
+        console.log("Done")
+        view.displayMessage("You sank all my battleships, in " + this.guesses + " guesses");
+      }
+    }
+
+  }
 };
 
 var view = {
-  displayMessage: function(msg) {
+  displayMessage: function (msg) {
     //Use DOM to get #messageArea
     //set innerHTML to message passed to the displayMessage method
-    
+
     var messageArea = document.getElementById("messageArea");
     messageArea.innerHTML = msg;
   },
-  
-  displayHit: function(location) {
+
+  displayHit: function (location) {
     //set class attribute to hit using setAttribute
     //get string id that has 2 nunbers for the location of hit or miss
     //Use the DOM to get the element with that id
     var cell = document.getElementById(location);
     cell.setAttribute("class", "hit");
   },
-  
-  displayMiss: function(location) {
+
+  displayMiss: function (location) {
     //set class attribute to miss using setAttribute
     //get string id that has 2 nunbers for the location of hit or miss
     //Use the DOM to get the element with that id
@@ -75,14 +91,52 @@ var view = {
   }
 };
 
-//view.displayMiss("00");
-//view.displayHit("34");
-//view.displayMiss("55");
-//view.displayHit("26");
-//view.displayMessage("Is this working?");
-model.fire("53");
-model.fire('06');
-model.fire("16");
-model.fire("63");
-model.fire("64");
+function parseGuess(guess) {
 
+  var alphabet = ["A", "B", "C", "D", "E", "F", "G"];
+
+  if (guess === null || guess.length !== 2) {
+    alert("Oops, please enter a letter and anumber on the board.");
+  } else {
+    var firstChar = guess.charAt(0);
+    var row = alphabet.indexOf(firstChar);
+    var column = guess.charAt(1);
+
+
+    if (isNaN(row) || isNaN(column)) {
+      console.log("Oops, that isn't on the board");
+    } else if (row < 0 || row >= model.boardSize || column < 0 || column >= model.boardSize) {
+      alert("Oops, that's off the board!");
+    } else {
+      return row + column;
+    }
+  }
+  //failed check
+  return null;
+}
+
+function init() {
+  var fireButton = document.getElementById("fireButton");
+  fireButton.onclick = handleFireButton;
+  var guessInput = document.getElementById("guessInput");
+  guessInput.onkeypress = handleKeyPress;
+}
+
+function handleKeyPress(e) {
+  var fireButton = document.getElementById("fireButton");
+  if (e.keyCode === 13) {
+    fireButton.click();
+    //Preven any other actions like submitting
+    return false;
+  }
+}
+
+function handleFireButton() {
+  console.log('clicked');
+  var guessInput = document.getElementById("guessInput");
+  var userGuess = guessInput.value;
+  controller.processGuess(userGuess);
+  guessInput.value = "";
+}
+
+window.onload = init;
