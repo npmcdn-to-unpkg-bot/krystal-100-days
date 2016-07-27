@@ -14,7 +14,7 @@ function loadData() {
   var streetStr = $("#street").val();
   var cityStr = $("#city").val();
   var address = streetStr + ", " + cityStr
-  var nyTimesAPI = "#";
+  var nyTimesAPI = "hidden";
   var url = 'https://maps.googleapis.com/maps/api/streetview?size=600x300&location=' + address + '';
   var nyTimesObj = {
     'api-key': nyTimesAPI,
@@ -52,9 +52,6 @@ function loadData() {
 
       };
   });
-
-
-
   return false;
 };
 
