@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>D3: Data-driven circles</title>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/d3/4.1.1/d3.js"></script>
+  <style type="text/css">
+    body,
+    html {
+      margin: 0;
+      padding: 0;
+      font-family: "Arial", sans-serif;
+      font-size: 0.95em;
+      text-align: center;
+    }
+    
+    [id=chart] {
+      background-color: #f5F2EB;
+      border: 1px solid #ccc;
+    }
+  </style>
+</head>
+
+<body>
+  <script>
+    var data = [132, 71, 337, 93, 78, 43, 20, 16, 30, 8, 17, 21];
+
+    var w = 800;
+    var h = 450;
+
+    var xScale = d3.scaleLinear()
+      .domain([0, d3.max(data)])
+      .range([0, w]);
+    var yScale = d3.scaleLinear()
+      .domain([0, data.length])
+      .range([0, h]);
+
+
+    var svg = d3.select("body")
+      .append("svg")
+      .attr("id", "chart")
+      .attr("width", w)
+      .attr("height", h);
+
+    svg.selectAll(".bar")
+      .data(data)
+      .enter()
+      .append("rect")
+      .attr("class", "bar")
+      .attr("x", 0)
+      .attr("y", function (d, i) {
+        return yScale(i);
+      })
+      .attr("width", function (d, i) {
+        return xScale(d);
+      })
+      .attr("height", function (d, i) {
+        return yScale(1) - 1;
+      })
+  </script>
+</body>
+
+</html>
