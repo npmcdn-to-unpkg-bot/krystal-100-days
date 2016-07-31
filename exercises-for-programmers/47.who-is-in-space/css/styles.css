@@ -1,0 +1,26 @@
+* {
+  box-sizing: border-box;
+}
+
+ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.output {
+  width: 300px;
+  border:1px solid #000;
+}
+
+.output li {
+  display: flex;
+}
+
+.craft, 
+.name,
+.th {
+  width: 50%;
+  border: 1px solid #ccc;
+  padding-left: 10px;
+}
+
