@@ -35,69 +35,128 @@
 
 
   <script>
-    //Width, height, padding
-    var w = 600;
-    var h = 250;
-    var padding = 25;
+    url = "https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json";
 
-    //Array of dummy data values (simple!)
-    var dataset = [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
-
-    var xScale = d3.scale.ordinal()
-      .domain(d3.range(dataset.length))
-      .rangeRoundBands([padding, w - padding], 0.05);
-
-
-    var yScale = d3.scale.linear()
-      .domain([0, d3.max(dataset)])
-      .rangeRound([h - padding, padding]);
-
-    var yAxis = d3.svg.axis()
-      .scale(yScale)
-      .orient("left")
-      .ticks(5);
-
-    var svg = d3.select("#barChartWrapper")
-      .append("svg")
-      .attr("width", w)
-      .attr("height", h);
-
-    svg.selectAll("rect")
-      .data(dataset)
-      .enter()
-      .append("rect")
-      .attr("x", function (d, i) {
-        return xScale(i);
-      })
-      .attr("y", function (d) {
-        return yScale(d);
-      })
-      .attr("width", xScale.rangeBand())
-      .attr("height", function (d) {
-        return h - padding - yScale(d);
-      })
-      .attr("fill", function (d) {
-        return "rgb(0, 0, " + (d * 10) + ")";
+    d3.json(url, function (error, data) {
+      var data = data.data;
+      var gdp = data.map(function (d) {
+        return d[1];
       });
 
-    //Y axis
-    svg.append("g")
-      .attr("class", "axis")
-      .attr("transform", "translate(" + padding + ",0)")
-      .call(yAxis);
+      var year = data.map(function (d) {
+        return d[0];
+      })
+
+      //Width, height, padding
+      var w = 900;
+      var h = 550;
+      var padding = 25;
+
+      var xScale = d3.scale.ordinal()
+        .domain(d3.range(year.length))
+        .rangeRoundBands([padding, w - padding], 0.05);
+
+      var yScale = d3.scale.linear()
+        .domain([0, d3.max(gdp)])
+        .rangeRound([h - padding, padding]);
+
+      var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient("left")
+        .ticks(5);
+
+      var svg = d3.select("#barChartWrapper")
+        .append("svg")
+        .attr("width", w)
+        .attr("height", h);
+
+      svg.selectAll("rect")
+        .data(data)
+        .enter()
+        .append("rect")
+        .attr("x", function (d, i) {
+          return xScale(i);
+        })
+        .attr("y", function (d) {
+        console.log(yScale(d));
+          return yScale(d);
+
+        })
+        .attr("width", xScale.rangeBand())
+//        .attr("height", function (d) {
+//          return h - padding - yScale(d);
+//        })
+        //        .attr("fill", function (d) {
+        //          return "rgb(0, 0, " + (d * 10) + ")";
+        //        });
+
+      //Y axis
+      svg.append("g")
+        .attr("class", "axis")
+        .attr("transform", "translate(" + padding + ",0)")
+        .call(yAxis);
+
+    });
 
 
-    //attr x, y, w, h, fill
+
+
+
+
+
+
+
+    //Width, height, padding
+    //    var w = 600;
+    //    var h = 250;
+    //    var padding = 25;
+
+    //Array of dummy data values (simple!)
+    //    var dataset = [5, 10, 13, 19, 21, 25, 22, 18, 15, 13, 11, 12, 15, 20, 18, 17, 16, 18, 23, 25];
+
+    //    var xScale = d3.scale.ordinal()
+    //      .domain(d3.range(dataset.length))
+    //      .rangeRoundBands([padding, w - padding], 0.05);
+
+
+    //    var yScale = d3.scale.linear()
+    //      .domain([0, d3.max(dataset)])
+    //      .rangeRound([h - padding, padding]);
+
+    //    var yAxis = d3.svg.axis()
+    //      .scale(yScale)
+    //      .orient("left")
+    //      .ticks(5);
+
+    //    var svg = d3.select("#barChartWrapper")
+    //      .append("svg")
+    //      .attr("width", w)
+    //      .attr("height", h);
+
+    //    svg.selectAll("rect")
+    //      .data(dataset)
+    //      .enter()
+    //      .append("rect")
+    //      .attr("x", function (d, i) {
+    //        return xScale(i);
+    //      })
+    //      .attr("y", function (d) {
+    //        return yScale(d);
+    //      })
+    //      .attr("width", xScale.rangeBand())
+    //      .attr("height", function (d) {
+    //        return h - padding - yScale(d);
+    //      })
+    //      .attr("fill", function (d) {
+    //        return "rgb(0, 0, " + (d * 10) + ")";
+    //      });
+    //
+    //    //Y axis
+    //    svg.append("g")
+    //      .attr("class", "axis")
+    //      .attr("transform", "translate(" + padding + ",0)")
+    //      .call(yAxis);
   </script>
-
-
-
-
-
-
-
-
-
 
 </body>
 
