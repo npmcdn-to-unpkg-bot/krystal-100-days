@@ -1,4 +1,6 @@
-# ReduxSimpleStarter
+# Simple Math Exercise
+
+This Redux skeleton is used from Stephen Grider's Udemy course. The following information is from the ReduxSimpleStarter README.
 
 Interested in learning [Redux](https://www.udemy.com/react-redux/)?
 
