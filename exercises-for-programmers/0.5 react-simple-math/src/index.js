@@ -1,15 +1,15 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { Provider } from 'react-redux';
-import { createStore, applyMiddleware } from 'redux';
+import NumInput from './components/number-input.js';
+import NumOutput from './components/number-output.js';
 
-import App from './components/app';
-import reducers from './reducers';
+const Main = () => {
+  return (
+    <div> 
+      <div><NumInput /></div>
+      <div><NumOutput /></div>
+    </div>  
+  )
+}
 
-const createStoreWithMiddleware = applyMiddleware()(createStore);
-
-ReactDOM.render(
-  <Provider store={createStoreWithMiddleware(reducers)}>
-    <App />
-  </Provider>
-  , document.querySelector('.container'));
+ReactDOM.render(<Main />, document.getElementById('container'));
