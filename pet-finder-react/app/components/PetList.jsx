@@ -1,10 +1,18 @@
-import React from 'react';
+var React = require('react');
+var PetListItems = require('PetListItems');
 
-const PetList = () => {
+const PetList = (props) => {
+  const petItems = props.pets.map((pet) => {
+    return <PetListItem pet={pet} />
+  });
+
   return (
-    <div className="pet-list">
+    <div id="petListWrapper">
       <h1>Pet List Component</h1>
-      <p>New Text</p>
+      <ul className="pet-list">
+
+      </ul>
+      <PetListItems />
     </div>
   );
 };
