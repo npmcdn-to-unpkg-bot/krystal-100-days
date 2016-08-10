@@ -2,7 +2,18 @@ var React = require('react');
 var PetList = require('PetList');
 var Selections = require('Selections');
 
-var Main = React.createClass {
+var Main = React.createClass ({
+
+  getInitialState: function() {
+    return {
+      pets: []
+    }
+  },
+  
+  
+
+
+
   render: function() {
     return (
       <div>
@@ -19,6 +30,6 @@ var Main = React.createClass {
   }
 
   
-}
+});
 
 module.exports = Main;
