@@ -24,6 +24,8 @@ module.exports = {
     alias: {
       Main: 'app/components/Main.jsx',
       PetList: 'app/components/PetList.jsx',
+      PetListItems: 'app/components/PetListItems.jsx',
+      Selections: 'app/components/Selections.jsx',
       applicationStyles: 'app/styles/app.scss'
     },
     extensions: ['', '.js', '.jsx']
