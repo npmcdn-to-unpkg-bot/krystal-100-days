@@ -1,9 +1,16 @@
 import React from 'react';
 
-const PetListItems = () => {
+const PetListItems = ({pet}) => {
+  // const imgURL = pet....url;
+  // <img src={imgURL} />
   return (
-    <h4>This is the PetListItems component </h4>
-      //li
+    <li>
+      <div className="pet-img">
+      </div>
+      <h3>{pet.name}</h3>
+      <h4>{pet.breed}</h4>
+      <p>{pet.description}</p>
+    </li>
   )
 };
 
