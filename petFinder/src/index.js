@@ -46,10 +46,12 @@ class App extends Component {
   //render & pass props
   render() {
     return (
-      <div id="App">
+      <div id="app">
         <h1>App Component</h1>
-        <Refinements />
-        <PetList pets={this.state.pets}/>
+        <div className="componentsWrapper">
+          <Refinements />
+          <PetList pets={this.state.pets}/>
+        </div>
       </div>
     )
   }

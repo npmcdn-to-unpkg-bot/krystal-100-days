@@ -1,0 +1,13 @@
+.componentsWrapper {
+  display: flex;
+}
+
+[id=refinements] {
+  flex: 1;
+  border: 1px solid black;
+}
+
+.pet-list {
+  flex: 3;
+  border: 1px solid red;
+}
