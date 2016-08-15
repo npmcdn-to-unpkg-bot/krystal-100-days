@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="d3.js"></script>
+  <style>
+  .bar-label {
+    text-anchor: end;
+  }
+  </style>
+</head>
+<body>
+  <div id="wrapper"></div>
+  <script>
+    //http://www.boxofficemojo.com/people/chart/?id=davidfincher.htm
+    var movieGross = [
+      {
+        title: "Seven",
+        adjGross: 198843500
+      },
+      {
+        title: "Gone Girl",
+        adjGross: 175095900
+      },
+      {
+        title: "The Curious Case of Benjamin Button",
+        adjGross: 153792600
+      },
+      {
+        title: "Panic Room",
+        adjGross: 143683500
+      },
+      {
+        title: "Alien 3",
+        adjGross: 115759300
+      },
+      {
+        title: "The Girl with the Dragon Tattoo",
+        adjGross: 112606600
+      },
+      {
+        title: "The Social Network",
+        adjGross: 104831100
+      },
+      {
+        title: "The Game",
+        adjGross: 91172700
+      },
+      {
+        title: "Fight Club",
+        adjGross: 63054600
+      },
+      {
+        title: "Zodiac",
+        adjGross: 41638600
+      }
+    ];
+
+    var svg = d3.select('#wrapper')
+      .append('svg')
+      .attr('width', 800)
+      .attr('height', 600);
+
+    var barGroup = d3.select('svg')
+      .append('g')
+      .attr('transform', 'translate(300,30)')
+      .attr('class', 'bar');
+
+    barGroup.selectAll('rect')
+      .data(movieGross)
+      .enter()
+      .append('rect')
+      .attr('x', 0)
+      .attr('y', function(d, i){
+        return i * 25;
+      })
+      .attr('height', 20)
+      .attr('width', function(d){
+        return d.adjGross;
+      });
+
+    var labelGroup = svg.append('g')
+      .attr('transform', 'translate(290, 30)')
+      .attr('class', 'bar-label');
+
+    labelGroup.selectAll('text')
+      .data(movieGross)
+      .enter()
+      .append('text')
+      .attr('x', 0)
+      .attr('y', function(d, i) {
+        return (i * 25) + 15;
+      })
+      .text(function(d) {
+        return d.title;
+      })
+
+  </script>
+</body>
+</html>
