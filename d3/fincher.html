@@ -10,6 +10,15 @@
   .bar-label {
     text-anchor: end;
   }
+
+  .axis path {
+    display: none;
+  }
+
+  .axis line {
+    stroke: black;
+    stroke-width: 1px;
+  }
   </style>
 </head>
 <body>
@@ -59,14 +68,28 @@
       }
     ];
 
-    var svg = d3.select('#wrapper')
-      .append('svg')
-      .attr('width', 800)
-      .attr('height', 600);
+    var margin = {top: 30, right: 0, bottom: 0, left: 300};
+        width = 800 - margin.left - margin.right,
+        height = 600 - margin.top - margin.bottom;
 
-    var barGroup = d3.select('svg')
+    var max = d3.max(d3.values(movieGross));
+
+    var scale = d3.scale.linear()
+        .domain([0, max.adjGross ])
+        .range([0, width ]);
+
+    var axis = d3.svg.axis()
+      .scale(scale)
+      .orient('top')
+      .ticks(4, '$')
+
+    var svg = d3.select('#wrapper').append('svg')
+        .attr('width', width + margin.left + margin.right)
+        .attr('height', height + margin.top + margin.bottom)
       .append('g')
-      .attr('transform', 'translate(300,30)')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+    var barGroup = svg.append('g')
       .attr('class', 'bar');
 
     barGroup.selectAll('rect')
@@ -79,24 +102,28 @@
       })
       .attr('height', 20)
       .attr('width', function(d){
-        return d.adjGross;
-      });
+        return scale(d.adjGross);
+      })
+      .attr('fill', '#C2714F');
 
     var labelGroup = svg.append('g')
-      .attr('transform', 'translate(290, 30)')
       .attr('class', 'bar-label');
 
     labelGroup.selectAll('text')
       .data(movieGross)
       .enter()
       .append('text')
-      .attr('x', 0)
+      .attr('x', -10)
       .attr('y', function(d, i) {
         return (i * 25) + 15;
       })
       .text(function(d) {
         return d.title;
       })
+
+    svg.append('g')
+      .call(axis)
+      .attr('class', 'axis')
 
   </script>
 </body>
