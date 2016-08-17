@@ -15,9 +15,13 @@
     display: none;
   }
 
-  .axis line {
-    stroke: black;
-    stroke-width: 1px;
+  .axis.x line {
+  stroke: black;
+  stroke-width: 1px;
+  }
+
+  .axis.y line {
+    display: none;
   }
   </style>
 </head>
@@ -70,18 +74,28 @@
 
     var margin = {top: 30, right: 0, bottom: 0, left: 300};
         width = 800 - margin.left - margin.right,
-        height = 600 - margin.top - margin.bottom;
+        height = 400 - margin.top - margin.bottom;
 
-    var max = d3.max(d3.values(movieGross));
+    // var max = d3.max(d3.values(movieGross));
 
-    var scale = d3.scale.linear()
-        .domain([0, max.adjGross ])
-        .range([0, width ]);
+    var xScale = d3.scale.linear()
+        .domain([0, d3.max(movieGross, function(elem) {
+          return elem.adjGross
+        })])
+        .range([0, width]);
 
-    var axis = d3.svg.axis()
-      .scale(scale)
+    var xAxis = d3.svg.axis()
+      .scale(xScale)
       .orient('top')
       .ticks(4, '$')
+
+    var yScale = d3.scale.ordinal()
+      .domain(movieGross.map(function(elem) { return elem.title }))
+      .rangeBands([0, height], 0.2)
+
+    var yAxis = d3.svg.axis()
+      .scale(yScale)
+      .orient('left');
 
     var svg = d3.select('#wrapper').append('svg')
         .attr('width', width + margin.left + margin.right)
@@ -97,33 +111,22 @@
       .enter()
       .append('rect')
       .attr('x', 0)
-      .attr('y', function(d, i){
-        return i * 25;
+      .attr('y', function(d){
+        return yScale(d.title);
       })
-      .attr('height', 20)
+      .attr('height', yScale.rangeBand())
       .attr('width', function(d){
-        return scale(d.adjGross);
+        return xScale(d.adjGross);
       })
       .attr('fill', '#C2714F');
 
-    var labelGroup = svg.append('g')
-      .attr('class', 'bar-label');
-
-    labelGroup.selectAll('text')
-      .data(movieGross)
-      .enter()
-      .append('text')
-      .attr('x', -10)
-      .attr('y', function(d, i) {
-        return (i * 25) + 15;
-      })
-      .text(function(d) {
-        return d.title;
-      })
+    svg.append('g')
+      .call(xAxis)
+      .attr('class', 'x axis')
 
     svg.append('g')
-      .call(axis)
-      .attr('class', 'axis')
+      .call(yAxis)
+      .attr('class', 'y axis')
 
   </script>
 </body>
