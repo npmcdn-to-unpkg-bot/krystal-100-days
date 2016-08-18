@@ -1,7 +1,8 @@
 $(document).ready(function() {
   console.log(0);
 
-// http://api.petfinder.com/pet.find?format=json&key=3a62ece31719a64dcf6726980917d7ad&animal=dog&location=94089&age=senior&count=10
+
+// http://api.petfinder.com/pet.find?format=json&key=API_KEY&animal=dog&location=94089&age=senior&count=10
   var petURL = "http://api.petfinder.com/pet.find?format=json&key=" + API_KEY + "&animal=dog&location=33433";
   console.log(petURL)
 

@@ -7,11 +7,10 @@ const PetListItems = ({pet}) => {
     <li>
       <div className="pet-img">
       </div>
-      <h3>{pet.name}</h3>
-      <h4>{pet.breed}</h4>
-      <p>{pet.description}</p>
+      <h3>{pet.name['$t']}</h3>
     </li>
   )
 };
+
 
 export default PetListItems;

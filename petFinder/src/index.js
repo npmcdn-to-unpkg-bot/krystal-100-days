@@ -2,6 +2,8 @@ import React, {Component} from 'react';
 import ReactDOM from 'react-dom';
 import Refinements from './components/Refinements';
 import PetList from './components/PetList';
+var superagent = require('superagent');
+var jsonp = require('superagent-jsonp');
 
 const petsArr = [
   {
@@ -33,8 +35,33 @@ class App extends Component {
     super(props);
 
     this.state = {
-      pets: petsArr
+      // pets: petsArr
+      pets: []
     }
+  }
+
+  loadPetsFromServer() {
+
+    var API_KEY = "dedb026ea8e95977021fd47e36e08c2a";
+
+
+    var petURL = "http://api.petfinder.com/pet.find?format=json&key=" + API_KEY + "&animal=dog&location=33433";
+    console.log(petURL);
+    superagent.get(petURL).use(jsonp({
+      timeout: 4000
+    })).end((error, response) => {
+      this.setState({
+        pets: response.body.petfinder.pets.pet
+      });
+         console.log(this.state.pets);
+         console.log('state')
+    });
+
+  }
+
+  componentWillMount() {
+    this.loadPetsFromServer();
+    console.log("Api called")
   }
 
   //Set state

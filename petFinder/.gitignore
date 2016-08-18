@@ -1,5 +1,7 @@
 /node_modules
 bundle.js
+api.js
+api-test.js
 npm-debug.log
 .DS_Store
 
