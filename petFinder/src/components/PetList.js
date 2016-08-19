@@ -2,12 +2,11 @@ import React from 'react';
 import PetListItems from './PetListItems';
 
 const PetList = (props) => {
-    console.log('Props ' + props.pets)
   const petItems = props.pets.map((pet) => {
-   console.log(pet);
        return (
        <PetListItems
           pet={pet}
+          contact={pet.contact}
           key={pet.id['$t']}
       />
     );
