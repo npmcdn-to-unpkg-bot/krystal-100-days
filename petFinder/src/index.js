@@ -41,9 +41,7 @@ class App extends Component {
   }
 
   loadPetsFromServer() {
-
-    var API_KEY = 
-
+    const API_KEY = "dedb026ea8e95977021fd47e36e08c2a";
 
     var petURL = "http://api.petfinder.com/pet.find?format=json&key=" + API_KEY + "&animal=dog&location=33433";
     superagent.get(petURL).use(jsonp({

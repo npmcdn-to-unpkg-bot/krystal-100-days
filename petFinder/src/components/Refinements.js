@@ -16,6 +16,7 @@ class Refinements extends Component {
     return (
       <div id="refinements">
         <h2>This is the Refinements Component</h2>
+
       </div>
     )
   }
