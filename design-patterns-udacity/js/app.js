@@ -103,7 +103,7 @@ var bookList = {
       //Create a new list item and add the title
       listItem = document.createElement('li');
       listItem.textContent = book.title;
-
+      listItem.classList.remove("active")
       //On click, set the current book
       //Render bookDetails view
       listItem.addEventListener('click', (function(bookCopy) {
