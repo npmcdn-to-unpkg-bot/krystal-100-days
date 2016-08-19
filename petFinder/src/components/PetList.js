@@ -13,7 +13,7 @@ const PetList = (props) => {
   });
 
   return (
-    <div className="pet-list">
+    <div className="pet-list-container">
       <h3>This is the PetList component</h3>
       <ul className="pet-list">
          { petItems }

@@ -42,7 +42,7 @@ class App extends Component {
 
   loadPetsFromServer() {
 
-    
+    var API_KEY = 
 
 
     var petURL = "http://api.petfinder.com/pet.find?format=json&key=" + API_KEY + "&animal=dog&location=33433";
