@@ -53,25 +53,25 @@ var bookController = {
   init: function() {
     //Have the first book in the list show on page load
     model.currentBook = model.bookData[0];
-    
+
     //Initialize views
     bookList.init();
     bookDetails.init();
   },
-  
+
   getCurrentBook: function() {
     return model.currentBook;
   },
-  
+
   getBooks: function() {
     return model.bookData;
   },
-  
+
   //Use the object that's passed in to show new book info when a list item is clicked
   setCurrentBook: function(book) {
     model.currentBook = book;
   },
-  
+
   //Increments the like counter for the current book
   incrementCounter: function() {
     model.currentBook.likeCount++;
@@ -82,28 +82,28 @@ var bookController = {
 var bookList = {
   init: function() {
     this.bookList = document.getElementById("bookList");
-    
+
     //Render to update the DOM
     this.render();
   },
-  
+
   render: function() {
     var book, listItem, i;
-    
+
     //Ask the controller to get the list of books from the model
     var books = bookController.getBooks();
-    
+
     //Clear out the list
     this.bookList.innerHTML = '';
-    
+
     //loop over the book list array
     for(i = 0; i < books.length; i++) {
       book = books[i];
-      
+
       //Create a new list item and add the title
       listItem = document.createElement('li');
       listItem.textContent = book.title;
-      
+
       //On click, set the current book
       //Render bookDetails view
       listItem.addEventListener('click', (function(bookCopy) {
@@ -112,9 +112,9 @@ var bookList = {
             bookDetails.render();
           };
       })(book));
-      
+
       //Add the new list item to the list
-      this.bookList.appendChild(listItem);   
+      this.bookList.appendChild(listItem);
     }
   }
 };
@@ -127,45 +127,27 @@ var bookDetails = {
     this.bookDescription = document.getElementById("description");
     this.bookCover = document.getElementById("coverImage");
     this.likeBtn = document.getElementById("likeBtn");
-    
+    this.countNum = document.getElementById("countNum");
+
     //Increment book's like button
     this.likeBtn.addEventListener("click", function(){
       bookController.incrementCounter();
     });
-    
+
     //Update the DOM with new the book information
     this.render();
   },
 
   render: function() {
     var currentBook = bookController.getCurrentBook();
-    
+
     this.bookTitle.textContent = currentBook.title;
     this.bookYear.textContent = currentBook.year;
     this.bookDescription.textContent = currentBook.description;
     this.bookCover.src = currentBook.imgUrl;
-    this.countNum = currentBook.likeCount;  
+    this.countNum.textContent = currentBook.likeCount + ' likes';
   }
 };
 
 //Initialize everything
 bookController.init();
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
