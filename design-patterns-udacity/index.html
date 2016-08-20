@@ -7,16 +7,32 @@
   <title>Udacity Design Pattern Exercise</title>
 </head>
 <body>
-  <div id="appWrapper">
-    <ul id="bookList"></ul>
-    <section id="bookContainer">
-      <img src="" alt="book cover" id="coverImage">
-      <div id="book">
-       <h2 id="title"></h2>
-       <h3 id="year"></h3>
-       <p id="description"></p>
-       <button id="likeBtn">Great book!</button>
-       <p id="countNum"></p>
+  <h1>Horror</h1>
+  <div class="book-wrapper horror-books" data-component="book">
+    <ul class="book-list" data-book-list></ul>
+    <section class="book-container">
+      <img src="" alt="book cover" class="cover">
+      <div class="book">
+        <h2 class="title"></h2>
+        <h3 class="year"></h3>
+        <p class="description"></p>
+        <button class="like-button">Great book!</button>
+        <p class="count-number"></p>
+      </div>
+    </section>
+  </div>
+
+  <h1>Comics</h1>
+  <div class="book-wrapper comics-books" data-component="book">
+    <ul class="book-list" data-book-list></ul>
+    <section class="book-container">
+      <img src="" alt="book cover" class="cover">
+      <div class="book">
+        <h2 class="title"></h2>
+        <h3 class="year"></h3>
+        <p class="description"></p>
+        <button class="like-button">Great book!</button>
+        <p class="count-number"></p>
       </div>
     </section>
   </div>
