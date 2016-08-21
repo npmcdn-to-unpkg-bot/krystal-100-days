@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Free Code Camp GDP Bar Chart</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <script src="d3.js"></script>
+</head>
+
+<body>
+  <script>
+    var margin = {
+      top: 30,
+      right: 0,
+      bottom: 0,
+      left: 100
+    }
+
+    var width = 1000 - margin.right - margin.left;
+    var height = 1000 - margin.top - margin.bottom;
+
+    d3.json('https://raw.githubusercontent.com/FreeCodeCamp/ProjectReferenceData/master/GDP-data.json', function (error, response) {
+      var gdp = response.data.map(function (item) {
+        return item
+      })
+      console.log('gdp var')
+      console.log(gdp)
+
+      var xScale = d3.scale.linear()
+        .domain([0, d3.max(gdp, function (elem) {
+          return elem[1]
+        })])
+        .range([0, width]);
+
+      var xAxis = d3.svg.axis()
+        .scale(xScale)
+        .orient('top')
+        .ticks(4, '%')
+
+      var yScale = d3.scale.ordinal()
+        .domain(gdp.map(function (elem) {
+          return elem[0]
+        }))
+        .rangeBands([0, height], 0.2);
+
+      var yAxis = d3.svg.axis()
+        .scale(yScale)
+        .orient('left');
+
+      var svg = d3.select('body')
+        .append('svg')
+        .attr('width', width + margin.right + margin.left)
+        .attr('height', height + margin.top + margin.bottom)
+        .append('g')
+        .attr('transform', 'translate(' + margin.left + ',' + margin.top + ')');
+
+      var barGroup = svg.append('g')
+        .attr('class', 'bar')
+
+      barGroup.selectAll('rect')
+        .data(gdp)
+        .enter()
+        .append('rect')
+        .attr('x', 0)
+        .attr('y', function (d) {
+          console.log(d)
+          return yScale(d[0])
+        })
+        .attr('height', yScale.rangeBand())
+        .attr('width', function (d) {
+          return xScale(d[1])
+        });
+
+      svg.append('g')
+        .call(xAxis)
+        .attr('class', 'x axis')
+
+      svg.append('g')
+        .call(yAxis)
+        .attr('class', 'y axis')
+    });
+  </script>
+
+</body>
+</html>
