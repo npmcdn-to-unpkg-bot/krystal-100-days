@@ -2,37 +2,11 @@
   box-sizing: border-box;
 }
 
-ul {
-  list-style: none;
+html {
+  font-size: 18px;
 }
 
-.book-wrapper {
-  max-width: 900px;
-  width: 100%;
-  margin: 2rem auto;
-  border: 1px solid #ccc;
-  padding: 1rem;
-}
-
-.book-list {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 0;
-}
-
-.book-container {
-  margin-top: 2rem;
-  display: flex;
-}
-
-.book {
-  padding: 0 1rem;
-}
-
-.title {
-  margin-top: 0;
-}
-
-.like-button {
-  padding: 10px 15px;
+body {
+  padding: 1em;
+  font-family: 'Open Sans', sans-serif;
 }

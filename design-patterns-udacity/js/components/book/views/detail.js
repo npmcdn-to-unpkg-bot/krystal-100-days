@@ -1,11 +1,11 @@
 class BookDetail {
   constructor(context) {
-    this.title = document.querySelector(`${context} .title`)
-    this.year = document.querySelector(`${context} .year`)
-    this.description = document.querySelector(`${context} .description`)
-    this.cover = document.querySelector(`${context} .cover`)
-    this.likes = document.querySelector(`${context} .likes`)
-    this.likeButton = document.querySelector(`${context} .like-button`)
+    this.title = document.querySelector(`${context} .book--title`)
+    this.year = document.querySelector(`${context} .book--year`)
+    this.description = document.querySelector(`${context} .book--description`)
+    this.cover = document.querySelector(`${context} .book-detail--cover`)
+    this.likes = document.querySelector(`${context} .book--likes`)
+    this.likeButton = document.querySelector(`${context} .book--like-button`)
   }
 
   render(book) {
@@ -13,7 +13,8 @@ class BookDetail {
     this.year.textContent = book.year
     this.description.textContent = book.description
     this.cover.src = book.cover
-    this.likes.textContent = `${book.likes} likes`
+    this.cover.alt = `${book.title} by ${book.author} book`
+    this.likes.textContent = book.likes
 
     return this
   }
