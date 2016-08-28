@@ -1,4 +1,4 @@
-* {
+*, *:before, *:after {
   box-sizing: border-box;
 }
 
@@ -6,7 +6,7 @@ ul {
   list-style: none;
 }
 
-[id=appWrapper] {
+.book-wrapper {
   max-width: 900px;
   width: 100%;
   margin: 2rem auto;
@@ -14,25 +14,25 @@ ul {
   padding: 1rem;
 }
 
-[id=bookList] {
+.book-list {
   display: flex;
   justify-content: space-between;
   margin-top: 0;
 }
 
-[id=bookContainer] {
+.book-container {
   margin-top: 2rem;
   display: flex;
 }
 
-[id=book] {
+.book {
   padding: 0 1rem;
 }
 
-[id=title] {
+.title {
   margin-top: 0;
 }
 
-[id=likeBtn] {
+.like-button {
   padding: 10px 15px;
 }

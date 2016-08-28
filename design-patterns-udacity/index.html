@@ -7,8 +7,9 @@
   <title>Udacity Design Pattern Exercise</title>
 </head>
 <body>
-  <h1>Horror</h1>
-  <div class="book-wrapper horror-books" data-component="book">
+
+  <div class="book-wrapper horror-books">
+    <h2>Horror</h2>
     <ul class="book-list" data-book-list></ul>
     <section class="book-container">
       <img src="" alt="book cover" class="cover">
@@ -17,13 +18,13 @@
         <h3 class="year"></h3>
         <p class="description"></p>
         <button class="like-button">Great book!</button>
-        <p class="count-number"></p>
+        <p class="likes"></p>
       </div>
     </section>
   </div>
 
-  <h1>Comics</h1>
-  <div class="book-wrapper comics-books" data-component="book">
+  <div class="book-wrapper comics-books">
+    <h2>Comics</h2>
     <ul class="book-list" data-book-list></ul>
     <section class="book-container">
       <img src="" alt="book cover" class="cover">
@@ -32,10 +33,15 @@
         <h3 class="year"></h3>
         <p class="description"></p>
         <button class="like-button">Great book!</button>
-        <p class="count-number"></p>
+        <p class="likes"></p>
       </div>
     </section>
   </div>
+
+  <script src="js/components/book/views/detail.js"></script>
+  <script src="js/components/book/views/list.js"></script>
+  <script src="js/components/book/controller.js"></script>
+
   <script src="js/app.js"></script>
 </body>
 </html>
