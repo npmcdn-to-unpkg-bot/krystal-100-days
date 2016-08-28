@@ -1,0 +1,95 @@
+@charset "utf-8";
+
+.book-preview--title {
+  margin: 0 0 1em;
+
+  font-size: 2.5em;
+}
+
+.book-preview--content {
+  display: flex;
+  flex-direction: column;
+}
+
+.book-list {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.book-list--item {
+  display: flex;
+  align-items: center;
+  padding: .5em;
+  border-radius: 2px;
+  transition: background-color .3s cubic-bezier(0,0,0.2,1);
+}
+
+.book-list--item:hover {
+  background: #e7e7e7;
+  cursor: pointer;
+}
+
+.book-list--item + .book-list--item {
+  margin-top: 1em;
+}
+
+.book-list--item--cover {
+  max-width: 20%;
+  margin-right: 1em;
+}
+
+.book-list--item--author {
+  display: block;
+  font-size: .8em;
+  color: #333;
+}
+
+.book-detail {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  margin: 2em 0 0;
+}
+
+.book-detail--cover {
+  width: 100%;
+  margin: 0 0 1em;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+              0 3px 1px -2px rgba(0,0,0,.2),
+              0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.book--title,
+.book--year {
+  margin: 0;
+}
+
+.book--likes {
+  position: absolute;
+  top: 1em;
+  left: 1em;
+  padding: .5em;
+  border-radius: 3px;
+  color: #fff;
+  background: #e91e63;
+  box-shadow: 0 2px 2px 0 rgba(0,0,0,.14),
+              0 3px 1px -2px rgba(0,0,0,.2),
+              0 1px 5px 0 rgba(0,0,0,.12);
+}
+
+.book--likes:after {
+  content: " ❤︎";
+}
+
+.book--like-button {
+  padding: 1em 2em;
+  background: #E91E63;
+  color: #fff;
+  border: 0;
+  border-radius: 4px;
+  cursor: pointer;
+}

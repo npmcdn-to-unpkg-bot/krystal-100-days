@@ -1,41 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <link rel="stylesheet" href="css/styles.css">
-  <link rel="stylesheet" href="css/normalize.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
   <title>Udacity Design Pattern Exercise</title>
+  <link rel="stylesheet" href="css/normalize.css">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans">
+
+  <link rel="stylesheet" href="css/styles.css">
+  <link rel="stylesheet" href="css/book.css">
 </head>
 <body>
-  <h1>Horror</h1>
-  <div class="book-wrapper horror-books" data-component="book">
-    <ul class="book-list" data-book-list></ul>
-    <section class="book-container">
-      <img src="" alt="book cover" class="cover">
-      <div class="book">
-        <h2 class="title"></h2>
-        <h3 class="year"></h3>
-        <p class="description"></p>
-        <button class="like-button">Great book!</button>
-        <p class="count-number"></p>
-      </div>
-    </section>
-  </div>
 
-  <h1>Comics</h1>
-  <div class="book-wrapper comics-books" data-component="book">
-    <ul class="book-list" data-book-list></ul>
-    <section class="book-container">
-      <img src="" alt="book cover" class="cover">
-      <div class="book">
-        <h2 class="title"></h2>
-        <h3 class="year"></h3>
-        <p class="description"></p>
-        <button class="like-button">Great book!</button>
-        <p class="count-number"></p>
+  <section class="book-preview" data-books>
+    <h2 class="book-preview--title">Books</h2>
+    <div class="book-preview--content">
+      <ul class="book-list"></ul>
+      <div class="book-detail">
+        <span class="book--likes"></span>
+        <img class="book-detail--cover">
+        <div class="book">
+          <h3 class="book--title"></h3>
+          <p class="book--year"></p>
+          <p class="book--description"></p>
+          <button class="book--like-button">Great book!</button>
+        </div>
       </div>
-    </section>
-  </div>
+    </div>
+  </section>
+
+  <script src="js/components/book/models/book.js"></script>
+  <script src="js/components/book/views/detail.js"></script>
+  <script src="js/components/book/views/list.js"></script>
+  <script src="js/components/book/controllers/book-preview.js"></script>
+
+  <script src="js/data/books.js"></script>
   <script src="js/app.js"></script>
 </body>
 </html>
