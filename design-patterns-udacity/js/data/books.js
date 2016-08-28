@@ -1,4 +1,4 @@
-var books = [{
+const data = [{
   id: 1,
   title: "Choke",
   author: "Chuck Palahniuk",
@@ -44,3 +44,8 @@ var books = [{
   srcLink: "https://www.goodreads.com/book/show/2122.The_Fountainhead?from_search=true",
   likeCount: 0
 }]
+
+
+const books = data.map((book)=> {
+  return new Book(book)
+})

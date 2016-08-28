@@ -41,7 +41,7 @@ class BookController {
   }
 
   likeCurrentBook() {
-    this.currentBook.likeCount++
+    this.currentBook.like()
     this.renderBookDetail()
 
     return this

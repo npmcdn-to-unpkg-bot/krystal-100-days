@@ -13,7 +13,7 @@ class BookDetail {
     this.year.textContent = book.year
     this.description.textContent = book.description
     this.cover.src = book.cover
-    this.likes.textContent = `${book.likeCount} likes`
+    this.likes.textContent = `${book.likes} likes`
 
     return this
   }
