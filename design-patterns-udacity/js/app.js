@@ -1,4 +1,4 @@
-new BookPreviewComponents('[data-books]', {
+new BookPreviewComponent('[data-books]', {
   books: books,
   currentBook: books[0]
 })

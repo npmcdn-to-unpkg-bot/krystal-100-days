@@ -1,4 +1,4 @@
-class BookPreviewComponents {
+class BookPreviewComponent {
   get currentBook() {
     return this._currentBook
   }
