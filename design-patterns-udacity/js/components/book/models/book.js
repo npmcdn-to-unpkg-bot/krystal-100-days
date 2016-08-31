@@ -1,8 +1,4 @@
 class Book {
-  get likes() {
-    return this._likes
-  }
-
   constructor(config) {
     this.id = config.id
     this.title = config.title
@@ -11,11 +7,11 @@ class Book {
     this.year = config.year
     this.cover = config.cover
     this.link = config.link
-    this._likes = config.likes || 0
+    this.likes = config.likes || 0
   }
 
   like() {
-    this._likes++
+    this.likes++
 
     return this
   }
